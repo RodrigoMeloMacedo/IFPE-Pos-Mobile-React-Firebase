@@ -38,11 +38,11 @@ const ListaScreen = ({ navigation }) => {
               color="white"
             />
           }
-          title="Voltar"
+          title="<"
           onPress={() => navigation.navigate('Login')}
         />}
         rightComponent={<Button
-          title="Adicionar +"
+          title="+"
           onPress={() => navigation.navigate('CadastroContatos')}
         />}
         centerComponent={{ text: 'Lista de Dados', style: { color: '#fff', fontSize: 25 } }}

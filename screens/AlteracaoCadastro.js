@@ -63,7 +63,7 @@ const AlteracaoCadastroScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <Text h3 style={styles.title}>
-        ALTERAÇÃO
+        Alteração e Exclusão de Dados
       </Text>
       <Input
         placeholder="Nome"

@@ -53,10 +53,10 @@ function CadastroScreen({ navigation, route }) {
               color="white"
             />
           }
-          title="Voltar"
+          title="<"
           onPress={() => navigation.navigate('Lista')}
         />}
-        centerComponent={{ text: 'Adicionar Novo', style: { color: '#fff', fontSize: 25 } }}
+        centerComponent={{ text: 'Adicionar Novo Cadastro', style: { color: '#fff', fontSize: 25 } }}
       />
 
 

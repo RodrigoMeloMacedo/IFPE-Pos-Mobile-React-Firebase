@@ -1,30 +1,37 @@
+import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
+import { firebaseConfig } from "./Firebase.js";
 
 
 const SignupScreen = () => {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = () => {
-    console.log('Nome:', name);
-    console.log('Email:', email);
-    console.log('Senha:', password);
+  const app = initializeApp(firebaseConfig);
+
+  const handleSignup = async () => {
+    try {
+      const auth = getAuth(app);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password, {
+         email: email,
+      });
+      console.log('Usuário cadastrado com sucesso!', userCredential.user);
+      navigation.navigate('Lista');
+    } catch (error) {
+      console.log('Usuário não criado!', error);
+    }
   };
+
 
   return (
     <View style={styles.container}>
       <Text h3 style={styles.title}>
         CADASTRO
       </Text>
-      <Input
-        placeholder="Nome"
-        onChangeText={(text) => setName(text)}
-        value={name}
-        autoCapitalize="words"
-      />
+     
       <Input
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
@@ -43,7 +50,7 @@ const SignupScreen = () => {
         <Button
           title="Salvar"
           buttonStyle={styles.button}
-          onPress={() => navigation.navigate('Login')}
+          onPress={handleSignup } 
         />
       </View>
     </View>
